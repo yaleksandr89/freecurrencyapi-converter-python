@@ -9,4 +9,5 @@
 
 1. Установите зависимость `requests`: `pip install requests`
 2. Установите зависимость `python-dotenv`: `pip install python-dotenv`
-3. Переименовать `.env.example` в `.env` и указать токен для Freecurrencyapi
+   * Переименовать `.env.example` в `.env` и указать токен для Freecurrencyapi
+   * Импортировать необходимые модули и проверить, что токен получен в файле [request.py](../src/request.py)
