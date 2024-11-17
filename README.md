@@ -12,4 +12,4 @@
    * 2 вариант: `pip install -r requirements.txt`
 2. Подключить API токен:
    * Переименовать `.env.example` в `.env` и указать токен для Freecurrencyapi
-   * Импортировать необходимые модули и проверить, что токен получен в файле [request.py](../src/request.py)
+   * Импортировать необходимые модули и проверить, что токен получен в файле [request.py](src/request.py)

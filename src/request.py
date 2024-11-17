@@ -20,7 +20,7 @@ API_TOKEN = get_environment_variable("API_TOKEN")
 API_URL = get_environment_variable("API_URL")
 
 
-def fetch_exchange_rates(base_currency="USD", currencies=None, amount=1.0):
+def fetch_currency_rates(base_currency="USD", currencies=None, amount=1.0):
     """
     Получает последние курсы валют с API freecurrencyapi.com.
     :param base_currency: Валюта-основа (по умолчанию USD).
@@ -60,17 +60,16 @@ def fetch_exchange_rates(base_currency="USD", currencies=None, amount=1.0):
         if "data" not in data:
             return {"error": "Некорректный формат ответа от API."}
 
-        # # Применение количества к курсам
-        # rates = data["data"]
-        # adjusted_rates = {currency: rate * amount for currency, rate in rates.items()}
-        #
-        # return adjusted_rates
+        # Применение количества к курсам
+        rates = data["data"]
+        adjusted_rates = {currency: rate * amount for currency, rate in rates.items()}
+
+        return adjusted_rates
 
     except requests.RequestException as e:
         return {"error": f"Ошибка при соединении с API: {e}"}
     except ValueError as e:
         return {"error": str(e)}
 
-
-result = fetch_exchange_rates(currencies=["RUB"])
+result = fetch_currency_rates(currencies=["RUB"], amount=100)
 print(result)
