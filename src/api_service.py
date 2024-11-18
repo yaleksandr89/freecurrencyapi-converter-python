@@ -105,3 +105,20 @@ def get_all_currencies():
         return {"error": f"Ошибка при соединении с API: {e}"}
     except ValueError as e:
         return {"error": str(e)}
+
+
+def get_currency_codes():
+    """
+    Возвращает список всех доступных валютных кодов.
+    :return: Список валютных кодов
+    """
+    currencies = get_all_currencies()
+
+    # Если получена ошибка, возвращаем её
+    if 'error' in currencies:
+        return currencies
+
+    # Извлекаем только коды валют
+    currency_codes = list(currencies.keys())
+
+    return currency_codes
