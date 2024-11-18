@@ -1,6 +1,5 @@
 import os
 import requests
-from pprint import pprint
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -73,9 +72,6 @@ def fetch_currency_rates(base_currency="USD", currencies=None, amount=1.0):
         return {"error": str(e)}
 
 
-# latest_currency_rates = fetch_currency_rates(currencies=["RUB"], amount=100)
-# pprint(latest_currency_rates)
-
 def get_all_currencies():
     """
     Получает все поддерживаемые валюты с API freecurrencyapi.com.
@@ -109,7 +105,3 @@ def get_all_currencies():
         return {"error": f"Ошибка при соединении с API: {e}"}
     except ValueError as e:
         return {"error": str(e)}
-
-
-all_currencies = get_all_currencies()
-pprint(all_currencies)
