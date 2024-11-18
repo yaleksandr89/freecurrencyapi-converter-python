@@ -23,6 +23,7 @@ API_URL = get_environment_variable("API_URL")
 def fetch_currency_rates(base_currency="USD", currencies=None, amount=1.0):
     """
     Возвращает последние курсы обмена валют.
+    Пример: {'EUR': 94.91044299999999, 'USD': 99.97938099999999}
     :param base_currency: Валюта-основа (по умолчанию USD).
     :param currencies: Список целевых валют (например: ["EUR", "GBP"]).
     :param amount: Количество валюты для конвертации (дробное число, округляется до 3 знаков).
@@ -75,6 +76,25 @@ def fetch_currency_rates(base_currency="USD", currencies=None, amount=1.0):
 def get_all_currencies():
     """
     Получает все поддерживаемые валюты с API freecurrencyapi.com.
+    Пример:
+    {'AUD': {'code': 'AUD',
+         'decimal_digits': 2,
+         'name': 'Australian Dollar',
+         'name_plural': 'Australian dollars',
+         'rounding': 0,
+         'symbol': 'AU$',
+         'symbol_native': '$',
+         'type': 'fiat'},
+     'BGN': {'code': 'BGN',
+             'decimal_digits': 2,
+             'name': 'Bulgarian Lev',
+             'name_plural': 'Bulgarian leva',
+             'rounding': 0,
+             'symbol': 'BGN',
+             'symbol_native': 'лв.',
+             'type': 'fiat'},
+    ...
+    }
     :return: Список поддерживаемых валют
     """
     try:
@@ -109,7 +129,7 @@ def get_all_currencies():
 
 def get_currency_codes():
     """
-    Возвращает список всех доступных валютных кодов.
+    Возвращает список всех доступных валютных кодов (['AUD', 'BGN', 'CAD', 'CHF', 'CZK', 'DKK', 'EUR', ...]).
     :return: Список валютных кодов
     """
     currencies = get_all_currencies()
