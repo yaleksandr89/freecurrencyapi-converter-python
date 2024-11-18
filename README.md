@@ -105,24 +105,25 @@ python tests/test.py
 
 ## Демонстрация работы
 
-Успешная конвертация (GIF)
-
-![currency-convert-result-work-success.gif](docs/currency-convert-result-work-success.gif)
-
-Ошибка при конвертации (GIF)
-
-![currency-convert-result-work-error.gif](docs/currency-convert-result-work-error.gif)
-
-<details>
-<summary>Скриншоты</summary>
-
-Успешная конвертация (PNG)
+Успешная конвертация
 
 ![currency-convert-result-work-success.png](docs/currency-convert-result-work-success.png)
 
-Ошибка при конвертации (PNG)
+<details>
+<summary>Процесс конвертации (успешная конвертация (GIF))</summary>
+
+![currency-convert-result-work-success.gif](docs/currency-convert-result-work-success.gif)
+
+</details>
+
+Ошибка при конвертации
 
 ![currency-convert-result-work-error.png](docs/currency-convert-result-work-error.png)
+
+<details>
+<summary>Процесс конвертации (ошибка при конвертации (GIF))</summary>
+
+![currency-convert-result-work-error.gif](docs/currency-convert-result-work-error.gif)
 
 </details>
 
