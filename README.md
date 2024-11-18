@@ -1,5 +1,12 @@
+# Конвертер валют
 
-# Конвертер валют / Currency Converter
+### Выберите язык
+
+| Русский  | English                              | Español                              | 中文                              | Français                              | Deutsch                              |
+|----------|--------------------------------------|--------------------------------------|---------------------------------|---------------------------------------|--------------------------------------|
+| **Выбран** | [English](./docs/lang/README_en.md) | [Español](./docs/lang/README_es.md) | [中文](./docs/lang/README_zh.md) | [Français](./docs/lang/README_fr.md) | [Deutsch](./docs/lang/README_de.md) |
+
+---
 
 **Currency Converter** — это проект для работы с API обмена валют. Вы можете запрашивать курсы валют, выполнять конвертацию и тестировать функционал через готовые тесты.
 
@@ -13,7 +20,6 @@ currency-converter/
 ├── src/
 │   ├── main.py           # Основной файл для запуска приложения
 │   ├── api_service.py    # Работа с API (запросы и обработка)
-│   ├── __init__.py       # Указатель на модуль src
 ├── tests/
 │   ├── test.py           # Тесты для проверки функционала
 ├── index.py              # Точка входа для запуска приложения
@@ -107,23 +113,23 @@ python tests/test.py
 
 Успешная конвертация
 
-![currency-convert-result-work-success.png](docs/currency-convert-result-work-success.png)
+![currency-convert-result-work-success.png](docs/img/currency-convert-result-work-success.png)
 
 <details>
 <summary>Процесс конвертации (успешная конвертация (GIF))</summary>
 
-![currency-convert-result-work-success.gif](docs/currency-convert-result-work-success.gif)
+![currency-convert-result-work-success.gif](docs/img/currency-convert-result-work-success.gif)
 
 </details>
 
 Ошибка при конвертации
 
-![currency-convert-result-work-error.png](docs/currency-convert-result-work-error.png)
+![currency-convert-result-work-error.png](docs/img/currency-convert-result-work-error.png)
 
 <details>
 <summary>Процесс конвертации (ошибка при конвертации (GIF))</summary>
 
-![currency-convert-result-work-error.gif](docs/currency-convert-result-work-error.gif)
+![currency-convert-result-work-error.gif](docs/img/currency-convert-result-work-error.gif)
 
 </details>
 
@@ -153,5 +159,3 @@ python tests/test.py
 3. **Доработка:**
    - Основной функционал (`main.py`) будет реализован позже.
    - Для добавления новых тестов используйте директорию `tests`.
-
----
