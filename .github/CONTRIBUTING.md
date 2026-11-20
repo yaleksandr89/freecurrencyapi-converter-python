@@ -1,5 +1,11 @@
 # Участие в разработке
 
+## Выберите язык
+
+| Русский | English | Español | 中文 | Français | Deutsch |
+| --- | --- | --- | --- | --- | --- |
+| **Выбран** | [English](../docs/contributing/CONTRIBUTING_en.md) | [Español](../docs/contributing/CONTRIBUTING_es.md) | [中文](../docs/contributing/CONTRIBUTING_zh.md) | [Français](../docs/contributing/CONTRIBUTING_fr.md) | [Deutsch](../docs/contributing/CONTRIBUTING_de.md) |
+
 ## Перед началом
 
 Проверьте, обсуждается ли уже ваша задача. Для [нового обращения](https://github.com/yaleksandr89/freecurrencyapi-converter-python/issues/new/choose) выберите форму ошибки или предложения.

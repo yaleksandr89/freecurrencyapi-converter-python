@@ -1,5 +1,11 @@
 # Команды, ввод и ошибки
 
+## Выберите язык
+
+| Русский | English | Español | 中文 | Français | Deutsch |
+| --- | --- | --- | --- | --- | --- |
+| **Выбран** | [English](cli-and-errors_en.md) | [Español](cli-and-errors_es.md) | [中文](cli-and-errors_zh.md) | [Français](cli-and-errors_fr.md) | [Deutsch](cli-and-errors_de.md) |
+
 ## Параметры запуска
 
 Запускайте `index.py` из корня проекта через Python из `.venv`, созданного при установке. Примеры для Linux и macOS:

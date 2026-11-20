@@ -1,5 +1,11 @@
 # Политика безопасности
 
+## Выберите язык
+
+| Русский | English | Español | 中文 | Français | Deutsch |
+| --- | --- | --- | --- | --- | --- |
+| **Выбран** | [English](../docs/security/SECURITY_en.md) | [Español](../docs/security/SECURITY_es.md) | [中文](../docs/security/SECURITY_zh.md) | [Français](../docs/security/SECURITY_fr.md) | [Deutsch](../docs/security/SECURITY_de.md) |
+
 ## Область поддержки
 
 Политика распространяется на актуальный код в ветке `master`. Сообщайте об утечках ключа FreecurrencyAPI, небезопасной обработке ответов API и попадании секретов в вывод CLI или журналы.

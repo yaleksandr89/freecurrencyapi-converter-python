@@ -1,5 +1,11 @@
 # Архитектура конвертера
 
+## Выберите язык
+
+| Русский | English | Español | 中文 | Français | Deutsch |
+| --- | --- | --- | --- | --- | --- |
+| **Выбран** | [English](architecture_en.md) | [Español](architecture_es.md) | [中文](architecture_zh.md) | [Français](architecture_fr.md) | [Deutsch](architecture_de.md) |
+
 ## Компоненты
 
 | Файл | Ответственность |

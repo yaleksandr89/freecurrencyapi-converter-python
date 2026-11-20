@@ -7,6 +7,13 @@
 
 ![Currency Converter — интерактивный конвертер валют на Python](docs/assets/currency-converter-readme-cover.png)
 
+## Выберите язык
+
+| Русский | English | Español | 中文 | Français | Deutsch |
+| --- | --- | --- | --- | --- | --- |
+| **Выбран** | [English](docs/lang/README_en.md) | [Español](docs/lang/README_es.md) | [中文](docs/lang/README_zh.md) | [Français](docs/lang/README_fr.md) | [Deutsch](docs/lang/README_de.md) |
+
+
 Интерактивный конвертер на Python пересчитывает сумму из одной валюты в одну или несколько других по курсам FreecurrencyAPI. Ввод и результаты отображаются в терминале.
 
 - Список доступных валют загружается при каждом интерактивном запуске.

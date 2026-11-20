@@ -1,5 +1,11 @@
 # Установка и первый запуск
 
+## Выберите язык
+
+| Русский | English | Español | 中文 | Français | Deutsch |
+| --- | --- | --- | --- | --- | --- |
+| **Выбран** | [English](getting-started_en.md) | [Español](getting-started_es.md) | [中文](getting-started_zh.md) | [Français](getting-started_fr.md) | [Deutsch](getting-started_de.md) |
+
 ## Что понадобится
 
 - Git для клонирования, Python 3.12 или новее и модуль `venv` с `pip`.

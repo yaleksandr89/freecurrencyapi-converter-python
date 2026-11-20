@@ -1,157 +1,94 @@
 # Currency Converter
 
-### Choose Language
+[![Source Code](https://img.shields.io/badge/source-yaleksandr89%2Ffreecurrencyapi--converter--python-blue.svg?style=flat-square)](https://github.com/yaleksandr89/freecurrencyapi-converter-python)
+[![CI](https://github.com/yaleksandr89/freecurrencyapi-converter-python/actions/workflows/ci.yml/badge.svg)](https://github.com/yaleksandr89/freecurrencyapi-converter-python/actions/workflows/ci.yml)
+[![Python 3.12+](https://img.shields.io/badge/Python-3.12%2B-3776AB.svg?style=flat-square&logo=python&logoColor=white)](../../pyproject.toml)
+[![MIT License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](../../LICENSE.md)
 
-| Русский                    | English | Español | 中文 | Français | Deutsch |
-|----------------------------|------------|------------|-----------|-------------|----------|
+![Currency Converter — interactive Python currency converter](../assets/currency-converter-readme-cover.png)
+
+## Choose language
+
+| Русский | English | Español | 中文 | Français | Deutsch |
+| --- | --- | --- | --- | --- | --- |
 | [Русский](../../README.md) | **Selected** | [Español](README_es.md) | [中文](README_zh.md) | [Français](README_fr.md) | [Deutsch](README_de.md) |
 
----
+An interactive Python CLI that converts an amount from one currency into one or several others using FreecurrencyAPI exchange rates. Input and results appear in the terminal.
 
-**Currency Converter** is a project for working with the currency exchange API. You can request exchange rates, perform conversions, and test functionality through ready-made tests.
+- The list of available currencies is retrieved at the beginning of each interactive run.
+- Rates are requested for the selected currencies after input validation.
+- Prompts and messages are available in Russian and English.
 
----
+Python 3.12 or newer and your own FreecurrencyAPI key are required. The commands below target Linux and macOS with `make`. CI runs on Ubuntu with Python 3.12, 3.13, and 3.14.
 
-## Project structure
+## How conversion works
 
-```plain text
-currency-converter/
-├── docs/...              # Materials used in README.md
-├── src/
-│   ├── main.py           # The main file for launching the application
-│   ├── api_service.py    # Working with the API (requests and processing)
-├── tests/
-│   ├── test.py           # Tests to check the functionality
-├── index.py              # The entry point for launching the application
-├── .env                  # Configuration file (token and URL). It is created independently!
-├── .env.example          # Example of a configuration file
-├── .gitignore            # Ignored Git files
-├── requirements.txt      # List of dependencies
-├── README.md             # Project documentation
+Enter the source currency, amount, and target currencies. The converter fetches the selected rates and prints the results in the terminal.
+
+```mermaid
+flowchart LR
+    A["Load currency list"] --> B["Read and validate input"]
+    B --> C["Fetch exchange rates"]
+    C --> D["Calculate and display amounts"]
 ```
 
----
+For module responsibilities, API requests, and error paths, see the [architecture overview](../reference/architecture_en.md).
 
-## Installation
+## Quick start
 
-### 1. Cloning a repository
-
-Clone the project to your local computer:
+Clone the repository, create the virtual environment with its dependencies, and copy the configuration example.
 
 ```bash
+# Clone the repository and enter its directory.
 git clone https://github.com/yaleksandr89/freecurrencyapi-converter-python.git
 cd freecurrencyapi-converter-python
+
+# Create .venv and install development dependencies.
+make setup
+
+# Copy the configuration example without overwriting an existing .env.
+cp -n .env.example .env
 ```
 
-### 2. Creating a virtual environment
-
-It is recommended to use a virtual environment to isolate dependencies:
+Put the key from your FreecurrencyAPI account into `API_TOKEN` in `.env`. The example already contains the `API_URL` base address. Run either command from the repository root.
 
 ```bash
-# Creating a virtual environment
-python3 -m venv venv
+# Russian interface.
+make run
 
-# Virtual Environment activation
-source venv/bin/activate  # For Bash/Zsh/Linux/macOS
-venv\Scripts\activate     # For Windows
+# English interface.
+make run CLI_LANG=en
 ```
 
-### 3. Installing dependencies
+For Windows PowerShell installation and execution, see the [getting started guide](../guides/getting-started_en.md). CLI options, input rules, and exit codes are documented in the [CLI reference](../reference/cli-and-errors_en.md).
 
-Install dependencies from `requirements.txt`:
+## Demonstrations
 
-```bash
-pip install -r requirements.txt
-```
+### Successful conversion
+
+Amount conversion and output.
+
+https://github.com/user-attachments/assets/47d64727-342d-4cb8-ba4c-d223253b2338
+
+### Conversion error
+
+An error reported by the converter.
+
+https://github.com/user-attachments/assets/5b0408fb-e59c-467a-bef5-72b7e30c066b
+
+### Switching the interface language
+
+Starting the CLI with a different language for prompts and messages.
+
+https://github.com/user-attachments/assets/217d4e51-7e09-460e-a6be-c7712ecb7b0f
+
+## Feedback
+
+- Report a bug or suggest an improvement — [GitHub Issues](https://github.com/yaleksandr89/freecurrencyapi-converter-python/issues).
+- Discuss using the converter — [GitHub Discussions](https://github.com/yaleksandr89/freecurrencyapi-converter-python/discussions).
 
 ---
 
-## Configuration
-
-1. Rename the `.env.example` file to `.env`:
-
-```bash
-mv .env.example .env
-```
-
-2. Specify the token and the base API URL in `.env`:
-
-```plaintext
-API_TOKEN='ВАШ_API_ТОКЕН'
-API_URL='https://api.freecurrencyapi.com/v1'
-```
-
----
-
-## Launch
-
-### 1. Launching the application
-
-Run the project through the file `index.py`:
-
-```bash
-python3 index.py
-```
-
----
-
-## Testing
-
-### Running tests
-
-To run the tests, use the file `tests/test.py`:
-
-```bash
-python3 tests/test.py
-```
-
-This file checks the correctness of the API connection and displays a list of available currencies.
-
----
-
-## Demonstration of the work
-
-Successful conversion
-
-![currency-convert-result-work-success.png](/docs/img/currency-convert-result-work-success.png)
-
-<details>
-<summary>Conversion process (successful conversion (GIF))</summary>
-
-![currency-convert-result-work-success.gif](/docs/img/currency-convert-result-work-success.gif)
-
-</details>
-
-Conversion error
-
-![currency-convert-result-work-error.png](/docs/img/currency-convert-result-work-error.png)
-
-<details>
-<summary>Conversion process (error during conversion (GIF))</summary>
-
-![currency-convert-result-work-error.gif](/docs/img/currency-convert-result-work-error.gif)
-
-</details>
-
----
-
-## Currency Converter in PHP
-
-A PHP project has been created with similar functionality, but with a number of differences:
-
-- Implemented a web interface
-- All available service endpoints are described.
-
-Code example: [freecurrencyapi-converter-php](https://github.com/yaleksandr89/freecurrencyapi-converter-php) — Everyone's there, come in! 😄
-
----
-
-## Notes
-
-1. **Security Token:**
-   - Make sure that your API token is specified correctly in `.env`.
-   - Never add the `.env` file to the repository.
-
-2. **Recommendations:**
-   - Use a virtual environment to isolate dependencies.
-   - Update dependencies if necessary via `pip install --upgrade`.
+<p align="center">
+  If this project was useful, give it a star on GitHub so others can find it more easily. 🤘
+</p>
