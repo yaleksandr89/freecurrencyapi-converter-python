@@ -74,8 +74,6 @@ https://github.com/user-attachments/assets/5b0408fb-e59c-467a-bef5-72b7e30c066b
 
 https://github.com/user-attachments/assets/217d4e51-7e09-460e-a6be-c7712ecb7b0f
 
-Кроме CLI-версии, есть [конвертер валют на PHP](https://github.com/yaleksandr89/freecurrencyapi-converter-php) с веб-интерфейсом и описанием эндпоинтов FreecurrencyAPI.
-
 ## Обратная связь
 
 - Сообщить об ошибке или предложить улучшение — [GitHub Issues](https://github.com/yaleksandr89/freecurrencyapi-converter-python/issues).
