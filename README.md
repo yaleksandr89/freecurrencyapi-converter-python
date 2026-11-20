@@ -11,7 +11,20 @@
 - Курсы запрашиваются для выбранных валют после проверки ввода.
 - Подсказки и сообщения доступны на русском и английском языках.
 
-Нужен Python 3.12 или новее. Для конвертации нужны интернет и собственный ключ FreecurrencyAPI. Команды ниже рассчитаны на Linux и macOS с `make`. В CI проверки выполняются на Ubuntu с Python 3.12, 3.13 и 3.14.
+Нужен Python 3.12 или новее и собственный ключ FreecurrencyAPI. Команды ниже рассчитаны на Linux и macOS с `make`. В CI проверки выполняются на Ubuntu с Python 3.12, 3.13 и 3.14.
+
+## Как проходит конвертация
+
+Введите исходную валюту, сумму и целевые валюты. Конвертер получит курсы для выбранных кодов и покажет результат в терминале.
+
+```mermaid
+flowchart LR
+    A["Загрузить список валют"] --> B["Принять и проверить ввод"]
+    B --> C["Запросить курсы"]
+    C --> D["Рассчитать и вывести суммы"]
+```
+
+Порядок работы модулей, API-запросов и обработки сбоев подробно разобран в [описании архитектуры](docs/reference/architecture.md).
 
 ## Быстрый старт
 
@@ -39,18 +52,7 @@ make run
 make run CLI_LANG=en
 ```
 
-Первая команда запускает русский интерфейс, вторая — английский. Инструкции для PowerShell и способы проверки приведены в [руководстве по запуску](docs/guides/getting-started.md).
-
-## Как проходит конвертация
-
-Введите исходную валюту, сумму и целевые валюты. Конвертер получит курсы для выбранных кодов и покажет результат в терминале.
-
-```mermaid
-flowchart LR
-    A["Загрузить список валют"] --> B["Принять и проверить ввод"]
-    B --> C["Запросить курсы"]
-    C --> D["Рассчитать и вывести суммы"]
-```
+Для Windows PowerShell порядок установки и запуска приведён в [руководстве по началу работы](docs/guides/getting-started.md). Параметры CLI, правила ввода и коды ошибок описаны в [справочнике команд](docs/reference/cli-and-errors.md).
 
 ## Демонстрация
 
@@ -72,18 +74,15 @@ https://github.com/user-attachments/assets/5b0408fb-e59c-467a-bef5-72b7e30c066b
 
 https://github.com/user-attachments/assets/217d4e51-7e09-460e-a6be-c7712ecb7b0f
 
-## Документация и участие
+Кроме CLI-версии, есть [конвертер валют на PHP](https://github.com/yaleksandr89/freecurrencyapi-converter-php) с веб-интерфейсом и описанием эндпоинтов FreecurrencyAPI.
 
-- [Установка и первый запуск](docs/guides/getting-started.md)
-- [Команды, ввод и ошибки](docs/reference/cli-and-errors.md)
-- [Архитектура и схема выполнения](docs/reference/architecture.md)
-- [Участие в разработке](.github/CONTRIBUTING.md)
-- [Политика безопасности](.github/SECURITY.md)
-- [Лицензия MIT](LICENSE.md)
-- [Конвертер валют на PHP](https://github.com/yaleksandr89/freecurrencyapi-converter-php) — отдельный проект с веб-интерфейсом и описанием эндпоинтов FreecurrencyAPI.
+## Обратная связь
 
-## Ранее опубликованные переводы
+- Сообщить об ошибке или предложить улучшение — [GitHub Issues](https://github.com/yaleksandr89/freecurrencyapi-converter-python/issues).
+- Обсудить использование конвертера — [GitHub Discussions](https://github.com/yaleksandr89/freecurrencyapi-converter-python/discussions).
 
-Переводы относятся к предыдущей версии документации.
+---
 
-[English](docs/lang/README_en.md) · [Español](docs/lang/README_es.md) · [中文](docs/lang/README_zh.md) · [Français](docs/lang/README_fr.md) · [Deutsch](docs/lang/README_de.md)
+<p align="center">
+  Если проект оказался полезен, поставьте звезду на GitHub — так его будет проще найти другим. 🤘
+</p>
