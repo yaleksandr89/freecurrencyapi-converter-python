@@ -1,11 +1,8 @@
+"""Entry point for the interactive currency converter."""
+
 import sys
-from pathlib import Path
 
-# Добавляем путь к директории `src` в sys.path
-src_path = Path(__file__).parent / "src"
-sys.path.append(str(src_path))
-
-from src.main import start_converter
+from currency_converter.main import main
 
 if __name__ == "__main__":
-    start_converter()
+    sys.exit(main())

@@ -1,0 +1,37 @@
+# Setuptools builds wheels and supports editable installs.
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "currency-converter"
+version = "0.1.0"
+description = "Interactive currency converter powered by FreecurrencyAPI"
+readme = "README.md"
+authors = [{name = "yaleksandr89"}]
+requires-python = ">=3.12"
+dependencies = [
+    "python-dotenv==1.2.4",
+    "requests==2.34.2",
+]
+
+[project.urls]
+Repository = "https://github.com/yaleksandr89/freecurrencyapi-converter-python"
+Issues = "https://github.com/yaleksandr89/freecurrencyapi-converter-python/issues"
+
+# Discover regular packages under the src directory.
+[tool.setuptools.packages.find]
+where = ["src"]
+namespaces = false
+
+# Limit test discovery to the test suite.
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+# Keep linting and formatting compatible with Python 3.12.
+[tool.ruff]
+target-version = "py312"
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
