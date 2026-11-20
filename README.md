@@ -5,6 +5,8 @@
 [![Python 3.12 и новее](https://img.shields.io/badge/Python-3.12%2B-3776AB?style=flat-square)](pyproject.toml)
 [![Лицензия MIT](https://img.shields.io/badge/%D0%BB%D0%B8%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D1%8F-MIT-2EA44F?style=flat-square)](LICENSE.md)
 
+![Currency Converter — интерактивный конвертер валют на Python](docs/assets/currency-converter-readme-cover.png)
+
 Интерактивный конвертер на Python пересчитывает сумму из одной валюты в одну или несколько других по курсам FreecurrencyAPI. Ввод и результаты отображаются в терминале.
 
 - Список доступных валют загружается при каждом интерактивном запуске.
