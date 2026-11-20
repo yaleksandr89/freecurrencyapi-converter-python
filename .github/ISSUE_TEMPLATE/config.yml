@@ -1,0 +1,6 @@
+# A blank issue lets reporters request a private channel without vulnerability details.
+blank_issues_enabled: true
+contact_links:
+  - name: Security policy / Политика безопасности
+    url: https://github.com/yaleksandr89/freecurrencyapi-converter-python/security/policy
+    about: Read how to report privately / Как сообщить об уязвимости приватно

@@ -1,0 +1,46 @@
+name: Bug report / Ошибка
+description: Report a reproducible CLI problem / Сообщить о воспроизводимой ошибке CLI
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Remove API tokens and private data. Never attach a complete `.env`.
+        Удалите API-токены и приватные данные. Не прикладывайте полный `.env`.
+  - type: input
+    id: python
+    attributes:
+      label: Python version / Версия Python
+      placeholder: "3.12.3"
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: OS and terminal / ОС и терминал
+    validations:
+      required: true
+  - type: input
+    id: command
+    attributes:
+      label: Command and flags / Команда и флаги
+      placeholder: python index.py --lang en
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce / Шаги воспроизведения
+      description: Include sample inputs / Укажите примеры ввода
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Expected and actual output / Ожидаемый и фактический вывод
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Sanitized logs / Журналы без секретов
+      render: text

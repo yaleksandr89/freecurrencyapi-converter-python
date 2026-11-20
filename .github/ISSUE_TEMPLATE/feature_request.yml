@@ -1,0 +1,21 @@
+name: Feature request / Предложение
+description: Suggest a CLI improvement / Предложить улучшение CLI
+body:
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Problem or use case / Проблема или сценарий
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Desired behavior / Желаемое поведение
+      description: Give an example of CLI input or output / Приведите пример ввода или вывода CLI
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives and impact / Альтернативы и последствия
+      description: Mention workarounds or changes to existing behavior / Укажите обходные варианты или изменения текущего поведения
