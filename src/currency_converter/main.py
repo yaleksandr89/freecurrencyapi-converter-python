@@ -62,6 +62,12 @@ def start_converter(lang: str = "ru") -> int:
         for count, (code, metadata) in enumerate(all_currencies.items(), start=1):
             print(f"{count}. [{code}] {metadata['name']}")
 
+        if sys.stdin is not None and sys.stdin.isatty():
+            try:
+                import readline  # noqa: F401 - enables terminal line editing
+            except ImportError:
+                pass
+
         user_currency = input(message("source_prompt")).strip().upper()
         if user_currency not in all_currencies:
             raise InputError("source_invalid")

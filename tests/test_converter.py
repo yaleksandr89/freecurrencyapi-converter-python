@@ -1,9 +1,13 @@
 """Offline tests for the converter CLI and FreecurrencyAPI client."""
 
+import errno
 import json
+import os
 import runpy
+import select
 import subprocess
 import sys
+import time
 from collections.abc import Sequence
 from pathlib import Path
 from unittest.mock import Mock
@@ -218,6 +222,92 @@ def test_entry_point_returns_130_on_interrupt(
     assert "Конвертация отменена." in capsys.readouterr().err
 
 
+@pytest.mark.skipif(sys.platform != "linux", reason="requires Linux IUTF8")
+def test_cli_backspace_erases_utf8_characters() -> None:
+    import pty
+    import termios
+
+    script = """
+import locale
+import sys
+from importlib.util import find_spec
+from unittest.mock import patch
+
+if find_spec("readline") is None or locale.getencoding() != "UTF-8":
+    raise SystemExit(77)
+
+import index
+
+def capture(_prompt):
+    raw = input("PTY input: ")
+    print(f"PTY result: {ascii(raw)}")
+    raise SystemExit(0)
+
+currencies = {"RUB": {"name": "Ruble"}}
+with (
+    patch("currency_converter.main.get_all_currencies", return_value=currencies),
+    patch("currency_converter.main.input", capture, create=True),
+    patch("requests.sessions.Session.send", side_effect=AssertionError("HTTP called")),
+):
+    raise SystemExit(index.main(["--lang", "en"]))
+"""
+    try:
+        master, slave = pty.openpty()
+    except OSError as error:
+        pytest.skip(f"PTY unavailable: {error}")
+
+    with (
+        os.fdopen(master, "rb", buffering=0) as terminal,
+        os.fdopen(slave, "rb") as tty,
+    ):
+        attrs = termios.tcgetattr(tty)
+        attrs[0] &= ~getattr(termios, "IUTF8", 0x4000)  # Linux IUTF8 on older Python
+        attrs[6][termios.VERASE] = b"\x7f"
+        termios.tcsetattr(tty, termios.TCSANOW, attrs)
+        env = dict(os.environ, LC_ALL="C.UTF-8", TERM="dumb")
+        env.update(INPUTRC=os.devnull, EDITRC=os.devnull)
+        with subprocess.Popen(
+            [sys.executable, "-c", script],
+            cwd=PROJECT_ROOT,
+            stdin=tty,
+            stdout=tty,
+            stderr=tty,
+            env=env,
+        ) as child:
+            tty.close()
+            try:
+                output = b""
+                prompt = b"PTY input: "
+                sent = False
+                deadline = time.monotonic() + 10
+                while select.select(
+                    [terminal], [], [], max(0, deadline - time.monotonic())
+                )[0]:
+                    try:
+                        chunk = terminal.read(4096)
+                    except OSError as error:
+                        if error.errno != errno.EIO:  # Linux PTY hangup
+                            raise
+                        break
+                    if not chunk:
+                        break
+                    output += chunk
+                    if not sent and prompt in output:
+                        os.write(master, "КГИ".encode() + b"\x7f" * 3 + b"RUB\n")
+                        sent = True
+                else:
+                    pytest.fail(f"PTY timed out: {output!r}")
+                child.wait(timeout=10)
+            finally:
+                if child.poll() is None:
+                    child.kill()
+
+    if child.returncode == 77:
+        pytest.skip("requires readline and a UTF-8 locale")
+    assert child.returncode == 0, output
+    assert b"PTY result: 'RUB'\r\n" in output
+
+
 @pytest.mark.parametrize(
     ("answers", "ru", "en"),
     [
@@ -299,6 +389,7 @@ import sys
 from unittest.mock import patch
 
 original_path = sys.path[:]
+original_readline = sys.modules.get("readline")
 with (
     patch("dotenv.load_dotenv", side_effect=AssertionError("dotenv called")),
     patch("requests.sessions.Session.send", side_effect=AssertionError("HTTP called")),
@@ -309,6 +400,7 @@ with (
     import currency_converter.main
 
 assert sys.path == original_path
+assert sys.modules.get("readline") is original_readline
 """
     result = subprocess.run(
         [sys.executable, "-c", script],
