@@ -1,13 +1,13 @@
-# Политика безопасности / Security policy
+# Политика безопасности
 
-## Область поддержки / Support scope
+## Область поддержки
 
-Политика распространяется на актуальный код в ветке `master`. Сообщайте об утечках токена FreecurrencyAPI, небезопасной обработке ответов API и попадании секретов в вывод CLI или журналы.
+Политика распространяется на актуальный код в ветке `master`. Сообщайте об утечках ключа FreecurrencyAPI, небезопасной обработке ответов API и попадании секретов в вывод CLI или журналы.
 
-## Как сообщить / How to report
+## Как сообщить об уязвимости
 
-Если на вкладке [Security](https://github.com/yaleksandr89/freecurrencyapi-converter-python/security) доступна кнопка **Report a vulnerability**, отправьте отчёт через GitHub Private Vulnerability Reporting.
+Если на [вкладке безопасности](https://github.com/yaleksandr89/freecurrencyapi-converter-python/security) доступна кнопка **Report a vulnerability**, отправьте отчёт через GitHub Private Vulnerability Reporting.
 
-Если приватная форма недоступна, откройте [пустой Issue](https://github.com/yaleksandr89/freecurrencyapi-converter-python/issues/new) с краткой просьбой о закрытом канале связи. Не публикуйте детали уязвимости, способы её эксплуатации, токены или содержимое `.env`.
+Если приватная форма недоступна, создайте [обращение без шаблона](https://github.com/yaleksandr89/freecurrencyapi-converter-python/issues/new) с краткой просьбой о закрытом канале связи. Не публикуйте детали уязвимости, способы её эксплуатации, ключи или содержимое `.env`.
 
 В приватном отчёте укажите SHA коммита, версию Python, затронутую команду, возможные последствия и минимальные шаги воспроизведения с вымышленными данными.

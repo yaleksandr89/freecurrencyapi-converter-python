@@ -1,19 +1,19 @@
-## What changed / Что изменено
+# Описание изменений
 
-<!-- Describe the problem and the change. / Опишите проблему и изменение. -->
+<!-- Опишите проблему и изменение. -->
 
-## How verified / Как проверено
+## Как проверено
 
-<!-- List checks and results. / Укажите проверки и их результаты. -->
+<!-- Укажите проверки и их результаты. -->
 
-## CLI / API / security impact
+## Влияние на CLI, API и безопасность
 
-<!-- Note changes to CLI behavior, FreecurrencyAPI requests or secret handling. -->
+<!-- Укажите изменения в поведении CLI, запросах к FreecurrencyAPI или обработке секретов. -->
 
-## Checklist / Перед отправкой
+## Перед отправкой
 
-- [ ] The diff stays in scope / Изменения в рамках задачи.
-- [ ] No tokens, `.env` or sensitive logs / Токены, `.env` и чувствительные журналы отсутствуют.
-- [ ] Offline tests updated where relevant / Офлайн-тесты обновлены при необходимости.
-- [ ] `make check` passed / `make check` прошёл.
-- [ ] Docs updated where relevant / Документация обновлена при необходимости.
+- [ ] Изменения в рамках задачи.
+- [ ] В изменениях нет ключей API, файла `.env` и журналов с чувствительными данными.
+- [ ] Офлайн-тесты обновлены при необходимости.
+- [ ] `make check` выполнена успешно.
+- [ ] Документация обновлена при необходимости.
