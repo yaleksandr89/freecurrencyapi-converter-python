@@ -1,13 +1,19 @@
-# Политика безопасности / Security policy
+# Политика безопасности
 
-## Область поддержки / Support scope
+## Выберите язык
 
-Политика распространяется на актуальный код в ветке `master`. Сообщайте об утечках токена FreecurrencyAPI, небезопасной обработке ответов API и попадании секретов в вывод CLI или журналы.
+| Русский | English | Español | 中文 | Français | Deutsch |
+| --- | --- | --- | --- | --- | --- |
+| **Выбран** | [English](../docs/security/SECURITY_en.md) | [Español](../docs/security/SECURITY_es.md) | [中文](../docs/security/SECURITY_zh.md) | [Français](../docs/security/SECURITY_fr.md) | [Deutsch](../docs/security/SECURITY_de.md) |
 
-## Как сообщить / How to report
+## Область поддержки
 
-Если на вкладке [Security](https://github.com/yaleksandr89/freecurrencyapi-converter-python/security) доступна кнопка **Report a vulnerability**, отправьте отчёт через GitHub Private Vulnerability Reporting.
+Политика распространяется на актуальный код в ветке `master`. Сообщайте об утечках ключа FreecurrencyAPI, небезопасной обработке ответов API и попадании секретов в вывод CLI или журналы.
 
-Если приватная форма недоступна, откройте [пустой Issue](https://github.com/yaleksandr89/freecurrencyapi-converter-python/issues/new) с краткой просьбой о закрытом канале связи. Не публикуйте детали уязвимости, способы её эксплуатации, токены или содержимое `.env`.
+## Как сообщить об уязвимости
+
+Если на [вкладке безопасности](https://github.com/yaleksandr89/freecurrencyapi-converter-python/security) доступна кнопка **Report a vulnerability**, отправьте отчёт через GitHub Private Vulnerability Reporting.
+
+Если приватная форма недоступна, создайте [обращение без шаблона](https://github.com/yaleksandr89/freecurrencyapi-converter-python/issues/new) с краткой просьбой о закрытом канале связи. Не публикуйте детали уязвимости, способы её эксплуатации, ключи или содержимое `.env`.
 
 В приватном отчёте укажите SHA коммита, версию Python, затронутую команду, возможные последствия и минимальные шаги воспроизведения с вымышленными данными.

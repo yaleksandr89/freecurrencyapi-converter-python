@@ -1,32 +1,42 @@
-# Участие в разработке / Contributing
+# Участие в разработке
 
-## Перед началом / Before you start
+## Выберите язык
 
-- Проверьте, есть ли открытое обсуждение. Для [нового Issue](https://github.com/yaleksandr89/freecurrencyapi-converter-python/issues/new/choose) выберите форму ошибки или предложения.
-- Для ошибки укажите окружение, команду и входные данные, шаги воспроизведения, ожидаемый и фактический вывод. Для предложения опишите задачу и желаемое поведение CLI.
+| Русский | English | Español | 中文 | Français | Deutsch |
+| --- | --- | --- | --- | --- | --- |
+| **Выбран** | [English](../docs/contributing/CONTRIBUTING_en.md) | [Español](../docs/contributing/CONTRIBUTING_es.md) | [中文](../docs/contributing/CONTRIBUTING_zh.md) | [Français](../docs/contributing/CONTRIBUTING_fr.md) | [Deutsch](../docs/contributing/CONTRIBUTING_de.md) |
+
+## Перед началом
+
+Проверьте, обсуждается ли уже ваша задача. Для [нового обращения](https://github.com/yaleksandr89/freecurrencyapi-converter-python/issues/new/choose) выберите форму ошибки или предложения.
+
+- В отчёте об ошибке укажите окружение, команду и входные данные, шаги воспроизведения, ожидаемый и фактический вывод.
+- В предложении опишите задачу, которую хотите решить, и ожидаемое поведение CLI.
 - Об уязвимостях сообщайте по [политике безопасности](SECURITY.md).
 
-## Ветки и коммиты / Branches and commits
+## Ветки и коммиты
 
-Создайте отдельную ветку от `master`, например `fix/invalid-amount` или `feature/currency-search`. Используйте Conventional Commits.
+Создайте отдельную ветку от `master`, например `fix/invalid-amount` или `docs/setup-guide`. Для коммитов и заголовков запросов на слияние используйте Conventional Commits с английским префиксом типа и русским описанием.
 
 ```text
-fix: reject invalid conversion amounts
-feat: add currency search
-test: cover malformed API responses
+docs: уточнить запуск конвертера
+fix: отклонять недопустимые суммы
+test: проверить обработку некорректных ответов API
 ```
 
-## Локальная проверка / Local checks
+## Локальная проверка
 
-Нужен Python 3.12 или новее. При первом запуске `make setup` создаёт `.venv` выбранным интерпретатором и устанавливает зависимости для разработки. При необходимости укажите путь к нужному Python через `PYTHON`.
+В корне репозитория с Python 3.12 или новее выполните следующие команды на Linux или macOS. `make setup` создаёт `.venv` при первом запуске и устанавливает зависимости для разработки. Через `PYTHON` можно указать интерпретатор для создания окружения.
 
-```sh
+```bash
 make setup PYTHON=python3
 make check
 ```
 
-`make check` запускает pytest, Ruff и `pip check` через `.venv/bin/python`. Тесты подменяют ответы FreecurrencyAPI и работают без сети и реального токена. Не добавляйте в коммиты `.env`, реальные API-токены и журналы с секретами.
+`make check` запускает pytest, проверку стиля и форматирования через Ruff, затем `pip check`. Тесты подменяют ответы FreecurrencyAPI и работают без сети и реального ключа. Команды для PowerShell приведены в [руководстве по запуску](../docs/guides/getting-started.md#локальные-проверки).
 
-## Pull request
+Не добавляйте в коммиты `.env`, действующие ключи API и журналы с секретами.
 
-Откройте PR в `master`. Укажите причину изменения, выполненные проверки и влияние на команды, вывод CLI или запросы к FreecurrencyAPI. При необходимости обновите тесты и документацию.
+## Запрос на слияние
+
+Откройте запрос на слияние в `master`. Опишите причину изменения, выполненные проверки и влияние на команды, вывод CLI, запросы к FreecurrencyAPI или обработку секретов. При необходимости обновите тесты и документацию.
