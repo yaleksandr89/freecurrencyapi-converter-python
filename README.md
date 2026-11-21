@@ -1,9 +1,9 @@
 # Конвертер валют
 
-[![Исходный код](https://img.shields.io/badge/GitHub-%D0%B8%D1%81%D1%85%D0%BE%D0%B4%D0%BD%D1%8B%D0%B9_%D0%BA%D0%BE%D0%B4-181717?style=flat-square)](https://github.com/yaleksandr89/freecurrencyapi-converter-python)
-[![Проверки CI](https://github.com/yaleksandr89/freecurrencyapi-converter-python/actions/workflows/ci.yml/badge.svg)](https://github.com/yaleksandr89/freecurrencyapi-converter-python/actions/workflows/ci.yml)
-[![Python 3.12 и новее](https://img.shields.io/badge/Python-3.12%2B-3776AB?style=flat-square)](pyproject.toml)
-[![Лицензия MIT](https://img.shields.io/badge/%D0%BB%D0%B8%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D1%8F-MIT-2EA44F?style=flat-square)](LICENSE.md)
+[![Source Code](https://img.shields.io/badge/source-yaleksandr89%2Ffreecurrencyapi--converter--python-blue.svg?style=flat-square)](https://github.com/yaleksandr89/freecurrencyapi-converter-python)
+[![CI](https://github.com/yaleksandr89/freecurrencyapi-converter-python/actions/workflows/ci.yml/badge.svg)](https://github.com/yaleksandr89/freecurrencyapi-converter-python/actions/workflows/ci.yml)
+[![Python 3.12+](https://img.shields.io/badge/Python-3.12%2B-3776AB.svg?style=flat-square&logo=python&logoColor=white)](pyproject.toml)
+[![MIT License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
 ![Currency Converter — интерактивный конвертер валют на Python](docs/assets/currency-converter-readme-cover.png)
 
