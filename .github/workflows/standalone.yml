@@ -1,0 +1,108 @@
+name: Standalone
+
+on:
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: ${{ matrix.target }}
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-22.04
+            system: Linux
+            arch: x64
+            machine: x86_64
+            target: linux-x86_64
+            extension: tar.gz
+          - runner: windows-2022
+            system: Windows
+            arch: x64
+            machine: amd64
+            target: windows-x64
+            extension: zip
+          - runner: macos-15
+            system: Darwin
+            arch: arm64
+            machine: arm64
+            target: macos-arm64
+            extension: tar.gz
+    defaults:
+      run:
+        shell: bash # Git Bash on Windows
+    env:
+      ARCHIVE: currency-converter-${{ matrix.target }}.${{ matrix.extension }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+          architecture: ${{ matrix.arch }}
+
+      - name: Verify native runner and Python
+        env:
+          EXPECTED_SYSTEM: ${{ matrix.system }}
+          EXPECTED_ARCH: ${{ matrix.arch }}
+          EXPECTED_MACHINE: ${{ matrix.machine }}
+        run: |
+          python - <<'PY'
+          import os
+          import platform
+          import struct
+          import sys
+
+          expected = (os.environ["EXPECTED_SYSTEM"], os.environ["EXPECTED_ARCH"],
+                      os.environ["EXPECTED_MACHINE"], (3, 12), 64)
+          actual = (platform.system(), os.environ["RUNNER_ARCH"].lower(),
+                    platform.machine().lower(), sys.version_info[:2],
+                    struct.calcsize("P") * 8)
+          print(f"Native target (OS, runner arch, Python machine, version, bits): {actual}")
+          if actual != expected:
+              sys.exit(f"Expected {expected}, got {actual}")
+          PY
+
+      - name: Build console executable
+        run: |
+          python -m venv .venv
+          venv_python=.venv/bin/python
+          if [[ "$RUNNER_OS" == Windows ]]; then
+            venv_python=.venv/Scripts/python.exe
+          fi
+          "$venv_python" -m pip install . pyinstaller==6.22.3
+          # Keep Russian text and emoji usable when redirecting output on Windows.
+          "$venv_python" -m PyInstaller --onefile --console --name currency-converter \
+            --python-option "X utf8" --distpath .venv/standalone/dist \
+            --workpath .venv/standalone/work --specpath .venv/standalone/spec index.py
+
+      - name: Package and smoke-test the archived executable offline
+        run: |
+          executable=currency-converter
+          if [[ "$RUNNER_OS" == Windows ]]; then
+            executable=currency-converter.exe
+          fi
+          python -X utf8 scripts/standalone_smoke.py \
+            ".venv/standalone/dist/$executable" "dist/standalone/$ARCHIVE"
+
+          printf 'Extract the GitHub Actions artifact, then verify the inner archive before unpacking it. Run `sha256sum -c %s.sha256` (Linux or Git Bash) or `shasum -a 256 -c %s.sha256` (macOS) beside the archive.\n' \
+            "$ARCHIVE" "$ARCHIVE" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload validated bundle and checksum
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: currency-converter-${{ matrix.target }}
+          path: |
+            dist/standalone/${{ env.ARCHIVE }}
+            dist/standalone/${{ env.ARCHIVE }}.sha256
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
