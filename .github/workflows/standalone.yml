@@ -4,37 +4,68 @@ on:
   pull_request:
     branches: [master]
   workflow_dispatch:
+    inputs:
+      targets:
+        description: 'Цели сборки (полный выпуск требует all)'
+        required: true
+        type: choice
+        default: all
+        options:
+          - linux
+          - windows
+          - macos
+          - linux,windows
+          - linux,macos
+          - windows,macos
+          - all
 
 permissions:
   contents: read
 
 jobs:
+  select:
+    name: Select platforms
+    runs-on: ubuntu-22.04
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+    steps:
+      - name: Prepare build matrix
+        id: matrix
+        env:
+          SELECTED_TARGETS: ${{ github.event_name == 'workflow_dispatch' && inputs.targets || 'all' }}
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+
+          platforms = [
+              {"runner": "ubuntu-22.04", "system": "Linux", "arch": "x64",
+               "machine": "x86_64", "target": "linux-x86_64", "extension": "tar.gz"},
+              {"runner": "windows-2022", "system": "Windows", "arch": "x64",
+               "machine": "amd64", "target": "windows-x64", "extension": "zip"},
+              {"runner": "macos-15", "system": "Darwin", "arch": "arm64",
+               "machine": "arm64", "target": "macos-arm64", "extension": "tar.gz"},
+          ]
+          selection = os.environ["SELECTED_TARGETS"]
+          allowed = {"linux", "windows", "macos"}
+          requested = allowed if selection == "all" else set(selection.split(","))
+          if not requested or not requested <= allowed:
+              raise SystemExit(f"Unsupported target selection: {selection}")
+
+          selected = [row for row in platforms if row["target"].split("-", 1)[0] in requested]
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
+              output.write("matrix=" + json.dumps({"include": selected}) + "\n")
+          print("Selected targets:", ", ".join(row["target"] for row in selected))
+          PY
+
   build:
+    needs: select
     name: ${{ matrix.target }}
     runs-on: ${{ matrix.runner }}
     timeout-minutes: 15
     strategy:
       fail-fast: false
-      matrix:
-        include:
-          - runner: ubuntu-22.04
-            system: Linux
-            arch: x64
-            machine: x86_64
-            target: linux-x86_64
-            extension: tar.gz
-          - runner: windows-2022
-            system: Windows
-            arch: x64
-            machine: amd64
-            target: windows-x64
-            extension: zip
-          - runner: macos-15
-            system: Darwin
-            arch: arm64
-            machine: arm64
-            target: macos-arm64
-            extension: tar.gz
+      matrix: ${{ fromJSON(needs.select.outputs.matrix) }}
     defaults:
       run:
         shell: bash # Git Bash on Windows
