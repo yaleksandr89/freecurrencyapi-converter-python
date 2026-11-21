@@ -1,14 +1,17 @@
 # Setuptools builds wheels and supports editable installs.
 [build-system]
-requires = ["setuptools>=64"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "currency-converter"
 version = "0.1.0"
-description = "Interactive currency converter powered by FreecurrencyAPI"
+description = "Interactive Python CLI currency converter using FreecurrencyAPI exchange rates"
 readme = "README.md"
-authors = [{name = "yaleksandr89"}]
+authors = [{name = "Александр Юрченко", email = "y.aleksandr89@yandex.ru"}]
+keywords = ["currency-converter", "currency-exchange", "exchange-rates", "freecurrencyapi", "python", "cli"]
+license = "MIT"
+license-files = ["LICENSE.md"]
 requires-python = ">=3.12"
 dependencies = [
     "python-dotenv==1.2.4",
@@ -16,8 +19,13 @@ dependencies = [
 ]
 
 [project.urls]
+Homepage = "https://github.com/yaleksandr89/freecurrencyapi-converter-python"
 Repository = "https://github.com/yaleksandr89/freecurrencyapi-converter-python"
+Documentation = "https://github.com/yaleksandr89/freecurrencyapi-converter-python/blob/master/docs/guides/getting-started.md"
 Issues = "https://github.com/yaleksandr89/freecurrencyapi-converter-python/issues"
+Discussions = "https://github.com/yaleksandr89/freecurrencyapi-converter-python/discussions"
+Security = "https://github.com/yaleksandr89/freecurrencyapi-converter-python/security/policy"
+Author = "https://github.com/yaleksandr89"
 
 # Discover regular packages under the src directory.
 [tool.setuptools.packages.find]
