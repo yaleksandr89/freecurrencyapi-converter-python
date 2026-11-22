@@ -10,7 +10,8 @@
 
 | 文件 | 职责 |
 | --- | --- |
-| [`index.py`](../../index.py) | 调用 `main()` 并通过 `sys.exit()` 将返回码交给操作系统。 |
+| [`index.py`](../../index.py) | 调用 `main()` 并通过 `sys.exit()` 将返回码交给操作系统。 在 Windows 打包版本中，退出前会调用 `pause_after_explorer_launch()`。 |
+| [`windows_console.py`](../../src/currency_converter/windows_console.py) | 直接从资源管理器启动以 PyInstaller onefile 模式构建的 Windows EXE 时，程序可能在输出后等待按 Enter 键。从普通终端启动时，CLI 会直接退出并返回正常的退出码。 |
 | [`main.py`](../../src/currency_converter/main.py) | 解析命令行参数；交互式启动时通过 `load_dotenv()` 加载 `.env`；处理输入、结果与错误信息。 |
 | [`i18n.py`](../../src/currency_converter/i18n.py) | 保存俄语和英语的帮助、提示及错误文本。 |
 | [`api_service.py`](../../src/currency_converter/api_service.py) | 从环境读取 `API_TOKEN` 和 `API_URL`，通过 `requests` 发送请求、验证响应并计算换算金额。 |

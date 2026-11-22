@@ -19,7 +19,7 @@ Ein interaktiver Python-Währungsrechner für die Kommandozeile. Er rechnet eine
 - Die Kurse der ausgewählten Währungen werden erst nach der Eingabeprüfung angefordert.
 - Eingabeaufforderungen und Meldungen sind auf Russisch und Englisch verfügbar.
 
-Benötigt werden Python 3.12 oder neuer und ein eigener FreecurrencyAPI-Schlüssel. Die folgenden Befehle gelten für Linux und macOS mit `make`. Die CI prüft Python 3.12, 3.13 und 3.14 unter Ubuntu.
+Die Installation aus dem Quellcode erfordert Python 3.12 oder neuer. Für Umrechnungen ist ein eigener FreecurrencyAPI-Schlüssel erforderlich. Die folgenden Befehle gelten für Linux und macOS mit `make`. Die CI prüft Python 3.12, 3.13 und 3.14 unter Ubuntu.
 
 ## Ablauf einer Umrechnung
 
@@ -34,7 +34,11 @@ flowchart LR
 
 Die [Architekturübersicht](../reference/architecture_de.md) beschreibt Module, API-Aufrufe und Fehlerpfade.
 
-## Schnellstart
+## Eigenständige Programme
+
+Die eigenständigen Programme laufen ohne Python-Installation. Sobald auf der [Releases-Seite](https://github.com/yaleksandr89/freecurrencyapi-converter-python/releases) ein Archiv für Ihr System verfügbar ist, laden Sie es herunter und entpacken Sie es. Kopieren Sie `.env.example` nach `.env`, tragen Sie Ihren Schlüssel in `API_TOKEN` ein und starten Sie das Programm gemäß der beiliegenden `README.md`.
+
+## Schnellstart aus dem Quellcode
 
 Klonen Sie das Repository, erstellen Sie die virtuelle Umgebung mit ihren Abhängigkeiten und kopieren Sie die Beispielkonfiguration.
 

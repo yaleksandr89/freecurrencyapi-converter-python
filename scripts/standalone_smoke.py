@@ -10,13 +10,19 @@ import tempfile
 import zipfile
 from pathlib import Path
 
-LICENSE_FILE = Path(__file__).resolve().parents[1] / "LICENSE.md"
-MACOS_LAUNCHER = Path(__file__).resolve().with_name("Launch Currency Converter.command")
+SCRIPTS_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = SCRIPTS_DIR.parent
+SUPPORT_FILES = (
+    SCRIPTS_DIR / "standalone" / "README.md",
+    PROJECT_ROOT / ".env.example",
+    PROJECT_ROOT / "LICENSE.md",
+)
+MACOS_LAUNCHER = SCRIPTS_DIR / "Launch Currency Converter.command"
 
 
 def create_archive(executable: Path, archive: Path, launcher: Path | None) -> None:
     archive.parent.mkdir(parents=True, exist_ok=True)
-    files = (executable, LICENSE_FILE)
+    files = (executable, *SUPPORT_FILES)
     if launcher is not None:
         files += (launcher,)
     if archive.suffix == ".zip":
@@ -32,10 +38,10 @@ def create_archive(executable: Path, archive: Path, launcher: Path | None) -> No
 def extract_archive(
     archive: Path, destination: Path, executable_name: str, launcher: Path | None
 ) -> None:
-    expected = [executable_name, LICENSE_FILE.name]
+    support_files = SUPPORT_FILES
     if launcher is not None:
-        expected.append(launcher.name)
-    expected.sort()
+        support_files += (launcher,)
+    expected = sorted([executable_name, *(path.name for path in support_files)])
     if archive.suffix == ".zip":
         with zipfile.ZipFile(archive) as bundle:
             if sorted(bundle.namelist()) != expected:
@@ -51,14 +57,11 @@ def extract_archive(
             bundle.extractall(destination, filter="data")
         if not os.access(destination / executable_name, os.X_OK):
             raise SystemExit("Archived executable lost its execute permission")
-    if launcher is not None:
-        extracted_launcher = destination / launcher.name
-        if not os.access(extracted_launcher, os.X_OK):
-            raise SystemExit("Archived macOS launcher lost its execute permission")
-        if extracted_launcher.read_bytes() != launcher.read_bytes():
-            raise SystemExit(
-                f"Archived {launcher.name} content differs from the source"
-            )
+    if launcher is not None and not os.access(destination / launcher.name, os.X_OK):
+        raise SystemExit("Archived macOS launcher lost its execute permission")
+    for source in support_files:
+        if (destination / source.name).read_bytes() != source.read_bytes():
+            raise SystemExit(f"Archived {source.name} content differs from the source")
     print(f"{archive.name} contains only {', '.join(expected)}")
 
 
@@ -162,15 +165,24 @@ def main() -> None:
     args = parser.parse_args()
     executable = args.executable
     archive = args.archive
-    launcher = MACOS_LAUNCHER if platform.system() == "Darwin" else None
+    system = platform.system()
+    executable_name = (
+        "currency-converter.exe" if system == "Windows" else "currency-converter"
+    )
+    extension = ".zip" if system == "Windows" else ".tar.gz"
+    if executable.name != executable_name or not archive.name.endswith(extension):
+        parser.error(
+            f"Expected {executable_name} and a {extension} archive on {system}"
+        )
+    launcher = MACOS_LAUNCHER if system == "Darwin" else None
     create_archive(executable, archive, launcher)
     with tempfile.TemporaryDirectory(prefix="currency-converter-") as temp:
         root = Path(temp).resolve()
         extracted = root / ("extracted bundle" if launcher is not None else "extracted")
         workdir = root / "work"
         workdir.mkdir()
-        extract_archive(archive, extracted, executable.name, launcher)
-        archived_executable = extracted / executable.name
+        extract_archive(archive, extracted, executable_name, launcher)
+        archived_executable = extracted / executable_name
         check_native_executable(archived_executable)
         archived_launcher = extracted / launcher.name if launcher is not None else None
         smoke_test(archived_executable, workdir, archived_launcher)

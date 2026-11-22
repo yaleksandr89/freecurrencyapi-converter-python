@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "currency-converter"
-version = "0.1.0"
+version = "1.0.0"
 description = "Interactive Python CLI currency converter using FreecurrencyAPI exchange rates"
 readme = "README.md"
 authors = [{name = "Александр Юрченко", email = "y.aleksandr89@yandex.ru"}]

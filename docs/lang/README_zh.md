@@ -19,7 +19,7 @@
 - 验证输入后，才会请求所选货币的汇率。
 - 命令行提示和消息目前支持俄语与英语。
 
-需要 Python 3.12 或更高版本，以及您自己的 FreecurrencyAPI 密钥。以下命令适用于使用 `make` 的 Linux 和 macOS。CI 在 Ubuntu 上检查 Python 3.12、3.13 和 3.14。
+从源代码安装需要 Python 3.12 或更高版本。进行货币转换需要您自己的 FreecurrencyAPI 密钥。以下命令适用于使用 `make` 的 Linux 和 macOS。CI 在 Ubuntu 上检查 Python 3.12、3.13 和 3.14。
 
 ## 转换流程
 
@@ -34,7 +34,11 @@ flowchart LR
 
 模块职责、API 请求及错误处理流程详见[架构说明](../reference/architecture_zh.md)。
 
-## 快速开始
+## 独立可执行版本
+
+独立可执行版本无需安装 Python。您的系统对应的压缩包在[发布页面](https://github.com/yaleksandr89/freecurrencyapi-converter-python/releases)提供后，下载并解压。将 `.env.example` 复制为 `.env`，把您自己的密钥填入 `API_TOKEN`，然后按压缩包内的 `README.md` 运行程序。
+
+## 从源代码快速开始
 
 克隆仓库，创建安装依赖的虚拟环境，并复制配置模板。
 

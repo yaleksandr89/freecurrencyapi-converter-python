@@ -10,7 +10,8 @@
 
 | File | Responsibility |
 | --- | --- |
-| [`index.py`](../../index.py) | Calls `main()` and passes its return code to the operating system through `sys.exit()`. |
+| [`index.py`](../../index.py) | Calls `main()` and passes its return code to the operating system through `sys.exit()`. On frozen Windows builds it calls `pause_after_explorer_launch()` before exiting. |
+| [`windows_console.py`](../../src/currency_converter/windows_console.py) | A Windows PyInstaller onefile EXE launched directly from Explorer may wait for Enter after printing its output. When launched from a regular terminal, the CLI exits without this pause and returns its usual exit codes. |
 | [`main.py`](../../src/currency_converter/main.py) | Parses arguments, loads `.env` via `load_dotenv()` for interactive runs, handles prompts, and prints results or errors. |
 | [`i18n.py`](../../src/currency_converter/i18n.py) | Stores Russian and English help text, prompts, and error messages. |
 | [`api_service.py`](../../src/currency_converter/api_service.py) | Reads `API_TOKEN` and `API_URL` from the environment, sends requests through `requests`, validates responses, and computes converted amounts. |

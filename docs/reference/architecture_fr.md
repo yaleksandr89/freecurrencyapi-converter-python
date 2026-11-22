@@ -10,7 +10,8 @@
 
 | Fichier | Responsabilité |
 | --- | --- |
-| [`index.py`](../../index.py) | Appelle `main()` et transmet son code de retour au système d’exploitation via `sys.exit()`. |
+| [`index.py`](../../index.py) | Appelle `main()` et transmet son code de retour au système d’exploitation via `sys.exit()`. Dans la version empaquetée pour Windows, il appelle `pause_after_explorer_launch()` avant de quitter. |
+| [`windows_console.py`](../../src/currency_converter/windows_console.py) | Un EXE Windows créé en mode onefile de PyInstaller et lancé directement depuis l’Explorateur peut attendre la touche Entrée après l’affichage. Depuis un terminal ordinaire, le CLI se termine sans cette pause et renvoie ses codes de sortie habituels. |
 | [`main.py`](../../src/currency_converter/main.py) | Analyse les arguments, charge `.env` avec `load_dotenv()` en mode interactif, gère les invites et affiche résultats ou erreurs. |
 | [`i18n.py`](../../src/currency_converter/i18n.py) | Contient les textes russes et anglais de l’aide, des invites et des erreurs. |
 | [`api_service.py`](../../src/currency_converter/api_service.py) | Lit `API_TOKEN` et `API_URL` dans l’environnement, envoie des requêtes avec `requests`, valide les réponses et calcule les montants convertis. |
