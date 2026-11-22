@@ -19,7 +19,7 @@ Convertisseur interactif en ligne de commande écrit en Python. Il convertit un 
 - Les taux des devises choisies sont demandés après la validation des données saisies.
 - Les invites et messages de l’interface sont disponibles en russe et en anglais.
 
-Python 3.12 ou une version ultérieure ainsi que votre propre clé FreecurrencyAPI sont nécessaires. Les commandes ci-dessous s’adressent à Linux et macOS avec `make`. La CI vérifie Python 3.12, 3.13 et 3.14 sur Ubuntu.
+L’installation depuis les sources nécessite Python 3.12 ou une version ultérieure. La conversion nécessite votre propre clé FreecurrencyAPI. Les commandes ci-dessous s’adressent à Linux et macOS avec `make`. La CI vérifie Python 3.12, 3.13 et 3.14 sur Ubuntu.
 
 ## Déroulement d’une conversion
 
@@ -34,7 +34,11 @@ flowchart LR
 
 Le [document d’architecture](../reference/architecture_fr.md) présente les modules, les appels à l’API et la gestion des erreurs.
 
-## Démarrage rapide
+## Versions autonomes
+
+Les versions autonomes fonctionnent sans installation de Python. Lorsqu’une archive adaptée à votre système est disponible sur la [page des versions](https://github.com/yaleksandr89/freecurrencyapi-converter-python/releases), téléchargez-la et décompressez-la. Copiez `.env.example` dans `.env`, renseignez votre clé dans `API_TOKEN` et suivez le `README.md` inclus pour lancer le programme.
+
+## Démarrage rapide depuis les sources
 
 Clonez le dépôt, créez l’environnement virtuel avec ses dépendances et copiez le modèle de configuration.
 

@@ -10,7 +10,8 @@
 
 | Datei | Aufgabe |
 | --- | --- |
-| [`index.py`](../../index.py) | Ruft `main()` auf und gibt den Rückgabecode mittels `sys.exit()` an das Betriebssystem weiter. |
+| [`index.py`](../../index.py) | Ruft `main()` auf und gibt den Rückgabecode mittels `sys.exit()` an das Betriebssystem weiter. Im gepackten Windows-Programm ruft es vor dem Beenden `pause_after_explorer_launch()` auf. |
+| [`windows_console.py`](../../src/currency_converter/windows_console.py) | Eine mit PyInstaller im Onefile-Modus erstellte Windows-EXE kann nach der Ausgabe auf die Eingabetaste warten, wenn sie direkt im Explorer geöffnet wird. Beim Start aus einem normalen Terminal beendet sich die CLI ohne diese Pause und gibt ihre üblichen Exitcodes zurück. |
 | [`main.py`](../../src/currency_converter/main.py) | Verarbeitet Argumente, lädt `.env` beim interaktiven Start mit `load_dotenv()`, steuert den Dialog und gibt Ergebnisse oder Fehler aus. |
 | [`i18n.py`](../../src/currency_converter/i18n.py) | Speichert russische und englische Texte für Hilfe, Eingabeaufforderungen und Fehlermeldungen. |
 | [`api_service.py`](../../src/currency_converter/api_service.py) | Liest `API_TOKEN` und `API_URL` aus der Umgebung, sendet Anfragen über `requests`, prüft Antworten und berechnet umgerechnete Beträge. |

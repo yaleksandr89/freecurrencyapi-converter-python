@@ -19,7 +19,7 @@ Conversor interactivo para la terminal, escrito en Python. Convierte una cantida
 - Los tipos de cambio de las divisas seleccionadas se solicitan después de validar los datos introducidos.
 - Los mensajes y las indicaciones del programa están disponibles en ruso e inglés.
 
-Se necesita Python 3.12 o posterior y una clave propia de FreecurrencyAPI. Los comandos siguientes se ejecutan en Linux y macOS con `make`. El CI comprueba Python 3.12, 3.13 y 3.14 en Ubuntu.
+La instalación desde el código fuente requiere Python 3.12 o posterior. Para convertir divisas se necesita una clave propia de FreecurrencyAPI. Los comandos siguientes se ejecutan en Linux y macOS con `make`. El CI comprueba Python 3.12, 3.13 y 3.14 en Ubuntu.
 
 ## Cómo funciona la conversión
 
@@ -34,7 +34,11 @@ flowchart LR
 
 El [documento de arquitectura](../reference/architecture_es.md) explica los módulos, las solicitudes a la API y la gestión de errores.
 
-## Inicio rápido
+## Versiones ejecutables
+
+Las versiones ejecutables funcionan sin instalar Python. Cuando haya un archivo para su sistema en la [página de lanzamientos](https://github.com/yaleksandr89/freecurrencyapi-converter-python/releases), descárguelo y descomprímalo. Copie `.env.example` a `.env`, configure `API_TOKEN` con su clave y siga las instrucciones del `README.md` incluido para iniciar el programa.
+
+## Inicio rápido desde el código fuente
 
 Clone el repositorio, cree el entorno virtual con sus dependencias y copie el ejemplo de configuración.
 

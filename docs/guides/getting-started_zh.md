@@ -6,7 +6,16 @@
 | --- | --- | --- | --- | --- | --- |
 | [Русский](getting-started.md) | [English](getting-started_en.md) | [Español](getting-started_es.md) | **当前语言** | [Français](getting-started_fr.md) | [Deutsch](getting-started_de.md) |
 
-## 准备工作
+## 独立可执行版本
+
+您的系统对应的压缩包在[发布页面](https://github.com/yaleksandr89/freecurrencyapi-converter-python/releases)提供后，下载并解压到单独的文件夹。独立可执行版本无需 Python 或 `make`。
+
+1. 在解压后的文件夹中，将 `.env.example` 复制为 `.env`，并将您的 FreecurrencyAPI 密钥填入 `API_TOKEN`。保留模板中的 `API_URL`。
+2. 在 Windows 上双击 `currency-converter.exe`。在 Linux 和 macOS 上，在终端中进入该文件夹并运行 `./currency-converter`。在 macOS 上也可以打开 `Launch Currency Converter.command`。
+
+压缩包内的 `README.md` 提供简短的俄语和英语说明。
+
+## 从源代码安装的准备工作
 
 - 用于克隆仓库的 Git、Python 3.12 或更高版本，以及带有 `pip` 的 `venv` 模块。
 - 转换货币需要您自己的 FreecurrencyAPI 密钥。注册后可从账户中获取密钥；API 详情见 [FreecurrencyAPI 文档](https://freecurrencyapi.com/docs/)。

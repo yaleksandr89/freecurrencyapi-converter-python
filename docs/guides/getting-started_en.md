@@ -6,7 +6,16 @@
 | --- | --- | --- | --- | --- | --- |
 | [Русский](getting-started.md) | **Selected** | [Español](getting-started_es.md) | [中文](getting-started_zh.md) | [Français](getting-started_fr.md) | [Deutsch](getting-started_de.md) |
 
-## Requirements
+## Standalone builds
+
+When an archive for your system is available on the [Releases page](https://github.com/yaleksandr89/freecurrencyapi-converter-python/releases), download and extract it into a folder. Standalone builds require neither Python nor `make`.
+
+1. In the extracted folder, copy `.env.example` to `.env` and set `API_TOKEN` to your FreecurrencyAPI key. Keep the template’s `API_URL`.
+2. On Windows, double-click `currency-converter.exe`. On Linux and macOS, run `./currency-converter` from that folder in a terminal. On macOS, you can also open `Launch Currency Converter.command`.
+
+The bundled `README.md` contains short instructions in Russian and English.
+
+## Requirements for installing from source
 
 - Git to clone the repository, Python 3.12 or newer, and the `venv` module with `pip`.
 - Your own FreecurrencyAPI key for conversions. Register with the service and obtain a key from your account. The [FreecurrencyAPI documentation](https://freecurrencyapi.com/docs/) describes the API.

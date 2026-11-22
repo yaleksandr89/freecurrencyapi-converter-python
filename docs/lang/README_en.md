@@ -19,7 +19,7 @@ An interactive Python CLI that converts an amount from one currency into one or 
 - Rates are requested for the selected currencies after input validation.
 - Prompts and messages are available in Russian and English.
 
-Python 3.12 or newer and your own FreecurrencyAPI key are required. The commands below target Linux and macOS with `make`. CI runs on Ubuntu with Python 3.12, 3.13, and 3.14.
+Installing from source requires Python 3.12 or newer. Conversion requires your own FreecurrencyAPI key. The commands below target Linux and macOS with `make`. CI runs on Ubuntu with Python 3.12, 3.13, and 3.14.
 
 ## How conversion works
 
@@ -34,7 +34,11 @@ flowchart LR
 
 For module responsibilities, API requests, and error paths, see the [architecture overview](../reference/architecture_en.md).
 
-## Quick start
+## Standalone builds
+
+Standalone builds run without a Python installation. When an archive for your system is available on the [Releases page](https://github.com/yaleksandr89/freecurrencyapi-converter-python/releases), download and extract it. Copy `.env.example` to `.env`, set `API_TOKEN` to your own key, and follow the bundled `README.md` to run the program.
+
+## Quick start from source
 
 Clone the repository, create the virtual environment with its dependencies, and copy the configuration example.
 

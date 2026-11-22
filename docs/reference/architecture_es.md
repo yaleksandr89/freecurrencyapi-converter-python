@@ -10,7 +10,8 @@
 
 | Archivo | Responsabilidad |
 | --- | --- |
-| [`index.py`](../../index.py) | Invoca `main()` y entrega su código de salida al sistema operativo mediante `sys.exit()`. |
+| [`index.py`](../../index.py) | Invoca `main()` y entrega su código de salida al sistema operativo mediante `sys.exit()`. En compilaciones empaquetadas para Windows llama a `pause_after_explorer_launch()` antes de salir. |
+| [`windows_console.py`](../../src/currency_converter/windows_console.py) | Un EXE de Windows creado con PyInstaller en modo onefile puede esperar a que se pulse Intro tras mostrar la salida si se abre directamente desde el Explorador. Si se inicia desde una terminal, el CLI termina sin esa pausa y conserva sus códigos de salida habituales. |
 | [`main.py`](../../src/currency_converter/main.py) | Analiza los argumentos, carga `.env` con `load_dotenv()` para la ejecución interactiva, gestiona el diálogo y muestra resultados o errores. |
 | [`i18n.py`](../../src/currency_converter/i18n.py) | Guarda los textos de ayuda, indicaciones y errores en ruso e inglés. |
 | [`api_service.py`](../../src/currency_converter/api_service.py) | Lee `API_TOKEN` y `API_URL` del entorno, realiza solicitudes con `requests`, valida las respuestas y calcula los importes convertidos. |
