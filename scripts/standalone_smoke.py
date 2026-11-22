@@ -12,8 +12,6 @@ from pathlib import Path
 
 LICENSE_FILE = Path(__file__).resolve().parents[1] / "LICENSE.md"
 MACOS_LAUNCHER = Path(__file__).resolve().with_name("Launch Currency Converter.command")
-WINDOWS_LAUNCHER = MACOS_LAUNCHER.with_suffix(".cmd")
-WINDOWS_CLOSE_PROMPT = "Press Enter to close\n"
 
 
 def create_archive(executable: Path, archive: Path, launcher: Path | None) -> None:
@@ -55,7 +53,7 @@ def extract_archive(
             raise SystemExit("Archived executable lost its execute permission")
     if launcher is not None:
         extracted_launcher = destination / launcher.name
-        if launcher.suffix == ".command" and not os.access(extracted_launcher, os.X_OK):
+        if not os.access(extracted_launcher, os.X_OK):
             raise SystemExit("Archived macOS launcher lost its execute permission")
         if extracted_launcher.read_bytes() != launcher.read_bytes():
             raise SystemExit(
@@ -90,19 +88,8 @@ def check_native_executable(executable: Path) -> None:
 def run_cli(
     entrypoint: Path, args: tuple[str, ...], workdir: Path, env: dict[str, str]
 ) -> subprocess.CompletedProcess[str]:
-    command: str | list[str] = [str(entrypoint), *args]
-    if entrypoint.suffix == ".cmd":
-        # cmd cannot start with a UNC working directory. The launcher sets its own.
-        workdir = Path(env["SystemRoot"])
-        cmd = workdir / "System32" / "cmd.exe"
-        # Let cmd expand the quoted launcher path once, including literal percent signs.
-        env = {**env, "CURRENCY_CONVERTER_LAUNCHER": str(entrypoint)}
-        forwarded = f" {subprocess.list2cmdline(args)}" if args else ""
-        command = (
-            f'"{cmd}" /d /v:off /s /c ""%CURRENCY_CONVERTER_LAUNCHER%"{forwarded}"'
-        )
     return subprocess.run(
-        command,
+        [str(entrypoint), *args],
         cwd=workdir,
         env=env,
         stdin=subprocess.DEVNULL,
@@ -155,10 +142,9 @@ def smoke_test(executable: Path, workdir: Path, launcher: Path | None) -> None:
         print(f"{label}: exit {status}, output verified")
         if launcher is not None:
             launched = run_cli(launcher, args, workdir, env)
-            prompt = WINDOWS_CLOSE_PROMPT if launcher.suffix == ".cmd" else ""
             if (launched.returncode, launched.stdout, launched.stderr) != (
                 result.returncode,
-                result.stdout + prompt,
+                result.stdout,
                 result.stderr,
             ):
                 raise SystemExit(
@@ -176,9 +162,7 @@ def main() -> None:
     args = parser.parse_args()
     executable = args.executable
     archive = args.archive
-    launcher = {"Darwin": MACOS_LAUNCHER, "Windows": WINDOWS_LAUNCHER}.get(
-        platform.system()
-    )
+    launcher = MACOS_LAUNCHER if platform.system() == "Darwin" else None
     create_archive(executable, archive, launcher)
     with tempfile.TemporaryDirectory(prefix="currency-converter-") as temp:
         root = Path(temp).resolve()
