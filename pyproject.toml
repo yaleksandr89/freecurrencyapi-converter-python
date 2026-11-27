@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "currency-converter"
-version = "1.0.0"
+version = "1.0.1"
 description = "Interactive Python CLI currency converter using FreecurrencyAPI exchange rates"
 readme = "README.md"
 authors = [{name = "Александр Юрченко", email = "y.aleksandr89@yandex.ru"}]
@@ -21,7 +21,7 @@ dependencies = [
 [project.urls]
 Homepage = "https://github.com/yaleksandr89/freecurrencyapi-converter-python"
 Repository = "https://github.com/yaleksandr89/freecurrencyapi-converter-python"
-Documentation = "https://github.com/yaleksandr89/freecurrencyapi-converter-python/blob/master/docs/guides/getting-started.md"
+Documentation = "https://github.com/yaleksandr89/freecurrencyapi-converter-python/blob/master/docs/langs/ru/guides/getting-started.md"
 Issues = "https://github.com/yaleksandr89/freecurrencyapi-converter-python/issues"
 Discussions = "https://github.com/yaleksandr89/freecurrencyapi-converter-python/discussions"
 Security = "https://github.com/yaleksandr89/freecurrencyapi-converter-python/security/policy"

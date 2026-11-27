@@ -1,21 +1,28 @@
-name: Предложение
-description: Предложить улучшение CLI
+name: Feature request / Предложение
+description: Suggest a CLI improvement / Предложить улучшение CLI
 body:
   - type: textarea
     id: use-case
     attributes:
-      label: Проблема или сценарий
+      label: Problem or use case / Проблема или сценарий
     validations:
       required: true
   - type: textarea
     id: behavior
     attributes:
-      label: Желаемое поведение
-      description: Приведите пример ввода или вывода CLI
+      label: Desired behavior / Желаемое поведение
+      description: Include a CLI input or output example / Приведите пример ввода или вывода CLI
     validations:
       required: true
   - type: textarea
     id: alternatives
     attributes:
-      label: Альтернативы и последствия
-      description: Укажите обходные варианты или изменения текущего поведения
+      label: Alternatives and consequences / Альтернативы и последствия
+      description: Workarounds, compatibility and scope / Обходные варианты, совместимость и границы изменений
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation / Подтверждение
+      options:
+        - label: I checked existing issues and the current release / Я проверил существующие обращения и текущий релиз
+          required: true

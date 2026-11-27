@@ -1,3 +1,4 @@
 * text=auto eol=lf
 *.gif -text -diff
 *.png -text -diff
+*.mp4 -text -diff

@@ -118,10 +118,12 @@ jobs:
       - name: Package and smoke-test the archived executable offline
         run: |
           executable=currency-converter
+          venv_python=.venv/bin/python
           if [[ "$RUNNER_OS" == Windows ]]; then
             executable=currency-converter.exe
+            venv_python=.venv/Scripts/python.exe
           fi
-          python -X utf8 scripts/standalone_smoke.py \
+          "$venv_python" -X utf8 scripts/standalone_smoke.py \
             ".venv/standalone/dist/$executable" "dist/standalone/$ARCHIVE"
 
           printf 'Extract the GitHub Actions artifact, then verify the inner archive before unpacking it. Run `sha256sum -c %s.sha256` (Linux or Git Bash) or `shasum -a 256 -c %s.sha256` (macOS) beside the archive.\n' \

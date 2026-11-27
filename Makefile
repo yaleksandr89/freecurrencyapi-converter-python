@@ -8,14 +8,14 @@ CLI_LANG ?= ru
 
 help:
 	@printf '%s\n' \
-		'make help                 Show commands' \
-		'make setup                Create .venv and install dev dependencies' \
-		'make run [CLI_LANG=en]    Run the converter (default language: ru)' \
-		'make test                 Run tests' \
-		'make lint                 Run Ruff lint' \
-		'make format               Format code with Ruff' \
-		'make format-check         Check formatting' \
-		'make check                Run tests, lint, format check, and pip check'
+		'make help                  Show commands / Показать команды' \
+		'make setup                 Create .venv and install dev dependencies / Создать .venv и установить зависимости разработки' \
+		'make run [CLI_LANG=en]     Run converter (default: ru) / Запустить конвертер (по умолчанию: ru)' \
+		'make test                  Run tests / Запустить тесты' \
+		'make lint                  Run Ruff lint / Проверить код через Ruff' \
+		'make format                Format code with Ruff / Форматировать код через Ruff' \
+		'make format-check          Check formatting / Проверить форматирование' \
+		'make check                 Run tests, lint, format check and pip check / Выполнить тесты, lint, проверку формата и pip check'
 
 setup:
 	@test -d .venv || $(PYTHON) -m venv .venv

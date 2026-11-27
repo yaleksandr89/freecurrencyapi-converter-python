@@ -1,6 +1,11 @@
-# Обращение без шаблона позволяет запросить закрытый канал без публикации деталей.
-blank_issues_enabled: true
+blank_issues_enabled: false
 contact_links:
-  - name: Политика безопасности
+  - name: Discussions / Обсуждения
+    url: https://github.com/yaleksandr89/freecurrencyapi-converter-python/discussions
+    about: Questions and general discussions / Вопросы и обсуждения проекта
+  - name: Security policy / Политика безопасности
     url: https://github.com/yaleksandr89/freecurrencyapi-converter-python/security/policy
-    about: Как сообщить об уязвимости через закрытый канал
+    about: Private vulnerability reporting / Приватное сообщение об уязвимости
+  - name: Contributing / Участие в разработке
+    url: https://github.com/yaleksandr89/freecurrencyapi-converter-python/blob/master/.github/CONTRIBUTING.md
+    about: Contribution guidelines / Правила участия

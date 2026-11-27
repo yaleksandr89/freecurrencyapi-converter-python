@@ -1,8 +1,8 @@
 # Конвертер валют
 
 [![Source Code](https://img.shields.io/badge/source-yaleksandr89%2Ffreecurrencyapi--converter--python-blue.svg?style=flat-square)](https://github.com/yaleksandr89/freecurrencyapi-converter-python)
-[![CI](https://github.com/yaleksandr89/freecurrencyapi-converter-python/actions/workflows/ci.yml/badge.svg)](https://github.com/yaleksandr89/freecurrencyapi-converter-python/actions/workflows/ci.yml)
 [![Python 3.12+](https://img.shields.io/badge/Python-3.12%2B-3776AB.svg?style=flat-square&logo=python&logoColor=white)](pyproject.toml)
+[![CI](https://github.com/yaleksandr89/freecurrencyapi-converter-python/actions/workflows/ci.yml/badge.svg)](https://github.com/yaleksandr89/freecurrencyapi-converter-python/actions/workflows/ci.yml)
 [![MIT License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
 ![Currency Converter — интерактивный конвертер валют на Python](docs/assets/currency-converter-readme-cover.png)
@@ -11,8 +11,7 @@
 
 | Русский | English | Español | 中文 | Français | Deutsch |
 | --- | --- | --- | --- | --- | --- |
-| **Выбран** | [English](docs/lang/README_en.md) | [Español](docs/lang/README_es.md) | [中文](docs/lang/README_zh.md) | [Français](docs/lang/README_fr.md) | [Deutsch](docs/lang/README_de.md) |
-
+| **Выбран** | [English](docs/langs/en/README.md) | [Español](docs/langs/es/README.md) | [中文](docs/langs/zh/README.md) | [Français](docs/langs/fr/README.md) | [Deutsch](docs/langs/de/README.md) |
 
 Интерактивный конвертер на Python пересчитывает сумму из одной валюты в одну или несколько других по курсам FreecurrencyAPI. Ввод и результаты отображаются в терминале.
 
@@ -27,13 +26,13 @@
 Введите исходную валюту, сумму и целевые валюты. Конвертер получит курсы для выбранных кодов и покажет результат в терминале.
 
 ```mermaid
-flowchart LR
+flowchart TD
     A["Загрузить список валют"] --> B["Принять и проверить ввод"]
     B --> C["Запросить курсы"]
     C --> D["Рассчитать и вывести суммы"]
 ```
 
-Порядок работы модулей, API-запросов и обработки сбоев подробно разобран в [описании архитектуры](docs/reference/architecture.md).
+Порядок работы модулей, API-запросов и обработки сбоев подробно разобран в [описании архитектуры](docs/langs/ru/reference/architecture.md).
 
 ## Готовые сборки
 
@@ -65,7 +64,7 @@ make run
 make run CLI_LANG=en
 ```
 
-Для Windows PowerShell порядок установки и запуска приведён в [руководстве по началу работы](docs/guides/getting-started.md). Параметры CLI, правила ввода и коды ошибок описаны в [справочнике команд](docs/reference/cli-and-errors.md).
+Для Windows PowerShell порядок установки и запуска приведён в [руководстве по началу работы](docs/langs/ru/guides/getting-started.md). Параметры CLI, правила ввода и коды ошибок описаны в [справочнике команд](docs/langs/ru/reference/cli-and-errors.md).
 
 ## Демонстрация
 
@@ -87,12 +86,18 @@ https://github.com/user-attachments/assets/5b0408fb-e59c-467a-bef5-72b7e30c066b
 
 https://github.com/user-attachments/assets/217d4e51-7e09-460e-a6be-c7712ecb7b0f
 
+## Документация
+
+- [Начало работы](docs/langs/ru/guides/getting-started.md)
+- [Архитектура](docs/langs/ru/reference/architecture.md)
+- [CLI и ошибки](docs/langs/ru/reference/cli-and-errors.md)
+- [Участие в разработке](.github/CONTRIBUTING.md)
+
 ## Обратная связь
 
 - Сообщить об ошибке или предложить улучшение — [GitHub Issues](https://github.com/yaleksandr89/freecurrencyapi-converter-python/issues).
 - Обсудить использование конвертера — [GitHub Discussions](https://github.com/yaleksandr89/freecurrencyapi-converter-python/discussions).
-
----
+- [Политика безопасности](.github/SECURITY.md).
 
 <p align="center">
   Если проект оказался полезен, поставьте звезду на GitHub — так его будет проще найти другим. 🤘

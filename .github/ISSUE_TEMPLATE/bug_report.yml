@@ -1,45 +1,55 @@
-name: Ошибка
-description: Сообщить о воспроизводимой ошибке CLI
+name: Bug report / Ошибка
+description: Report a reproducible CLI bug / Сообщить о воспроизводимой ошибке CLI
 body:
   - type: markdown
     attributes:
       value: |
+        Remove API keys and private data. Do not attach the full `.env`.
         Удалите ключи API и приватные данные. Не прикладывайте полный `.env`.
   - type: input
-    id: python
+    id: summary
     attributes:
-      label: Версия Python
-      placeholder: "3.12.3"
+      label: Summary / Краткое описание
     validations:
       required: true
   - type: input
     id: environment
     attributes:
-      label: ОС и терминал
+      label: OS, terminal, release or Python version / ОС, терминал, версия релиза или Python
+      placeholder: Windows 11, PowerShell, v1.0.0
     validations:
       required: true
   - type: input
     id: command
     attributes:
-      label: Команда и флаги
+      label: Command and options / Команда и флаги
       placeholder: python index.py --lang en
     validations:
       required: true
   - type: textarea
     id: steps
     attributes:
-      label: Шаги воспроизведения
-      description: Укажите примеры ввода
+      label: Steps to reproduce / Шаги воспроизведения
+      description: Include synthetic input examples / Приведите примеры ввода с вымышленными данными
     validations:
       required: true
   - type: textarea
     id: output
     attributes:
-      label: Ожидаемый и фактический вывод
+      label: Expected and actual output / Ожидаемый и фактический вывод
     validations:
       required: true
   - type: textarea
     id: logs
     attributes:
-      label: Журналы без секретов
+      label: Sanitized logs / Журналы без секретов
       render: text
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation / Подтверждение
+      options:
+        - label: I checked existing issues and the current release / Я проверил существующие обращения и текущий релиз
+          required: true
+        - label: No secrets or private data are included / Ключи и приватные данные удалены
+          required: true
