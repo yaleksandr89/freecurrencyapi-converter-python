@@ -4,7 +4,7 @@
 
 | Русский | English | Español | 中文 | Français | Deutsch |
 | --- | --- | --- | --- | --- | --- |
-| **Выбран** | [English](../docs/contributing/CONTRIBUTING_en.md) | [Español](../docs/contributing/CONTRIBUTING_es.md) | [中文](../docs/contributing/CONTRIBUTING_zh.md) | [Français](../docs/contributing/CONTRIBUTING_fr.md) | [Deutsch](../docs/contributing/CONTRIBUTING_de.md) |
+| **Выбран** | [English](https://github.com/yaleksandr89/freecurrencyapi-converter-python/blob/master/docs/langs/en/CONTRIBUTING.md) | [Español](https://github.com/yaleksandr89/freecurrencyapi-converter-python/blob/master/docs/langs/es/CONTRIBUTING.md) | [中文](https://github.com/yaleksandr89/freecurrencyapi-converter-python/blob/master/docs/langs/zh/CONTRIBUTING.md) | [Français](https://github.com/yaleksandr89/freecurrencyapi-converter-python/blob/master/docs/langs/fr/CONTRIBUTING.md) | [Deutsch](https://github.com/yaleksandr89/freecurrencyapi-converter-python/blob/master/docs/langs/de/CONTRIBUTING.md) |
 
 ## Перед началом
 
@@ -33,10 +33,12 @@ make setup PYTHON=python3
 make check
 ```
 
-`make check` запускает pytest, проверку стиля и форматирования через Ruff, затем `pip check`. Тесты подменяют ответы FreecurrencyAPI и работают без сети и реального ключа. Команды для PowerShell приведены в [руководстве по запуску](../docs/guides/getting-started.md#локальные-проверки).
+`make check` запускает pytest, проверку стиля и форматирования через Ruff, затем `pip check`. Тесты подменяют ответы FreecurrencyAPI и работают без сети и реального ключа. Команды для PowerShell приведены в [руководстве по запуску](https://github.com/yaleksandr89/freecurrencyapi-converter-python/blob/master/docs/langs/ru/guides/getting-started.md#локальные-проверки).
 
 Не добавляйте в коммиты `.env`, действующие ключи API и журналы с секретами.
 
 ## Запрос на слияние
 
 Откройте запрос на слияние в `master`. Опишите причину изменения, выполненные проверки и влияние на команды, вывод CLI, запросы к FreecurrencyAPI или обработку секретов. При необходимости обновите тесты и документацию.
+
+Сохраняйте синхронность шести локализаций документации и обоих языков интерфейса.

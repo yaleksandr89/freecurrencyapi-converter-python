@@ -4,16 +4,18 @@
 
 | Русский | English | Español | 中文 | Français | Deutsch |
 | --- | --- | --- | --- | --- | --- |
-| **Выбран** | [English](../docs/security/SECURITY_en.md) | [Español](../docs/security/SECURITY_es.md) | [中文](../docs/security/SECURITY_zh.md) | [Français](../docs/security/SECURITY_fr.md) | [Deutsch](../docs/security/SECURITY_de.md) |
+| **Выбран** | [English](https://github.com/yaleksandr89/freecurrencyapi-converter-python/blob/master/docs/langs/en/SECURITY.md) | [Español](https://github.com/yaleksandr89/freecurrencyapi-converter-python/blob/master/docs/langs/es/SECURITY.md) | [中文](https://github.com/yaleksandr89/freecurrencyapi-converter-python/blob/master/docs/langs/zh/SECURITY.md) | [Français](https://github.com/yaleksandr89/freecurrencyapi-converter-python/blob/master/docs/langs/fr/SECURITY.md) | [Deutsch](https://github.com/yaleksandr89/freecurrencyapi-converter-python/blob/master/docs/langs/de/SECURITY.md) |
 
 ## Область поддержки
 
-Политика распространяется на актуальный код в ветке `master`. Сообщайте об утечках ключа FreecurrencyAPI, небезопасной обработке ответов API и попадании секретов в вывод CLI или журналы.
+Политика распространяется на текущий стабильный релиз и актуальный код в ветке `master`. Более ранние версии отдельно не сопровождаются. Сообщайте об утечках ключа FreecurrencyAPI, небезопасной обработке ответов API и попадании секретов в вывод CLI или журналы.
 
 ## Как сообщить об уязвимости
 
 Если на [вкладке безопасности](https://github.com/yaleksandr89/freecurrencyapi-converter-python/security) доступна кнопка **Report a vulnerability**, отправьте отчёт через GitHub Private Vulnerability Reporting.
 
-Если приватная форма недоступна, создайте [обращение без шаблона](https://github.com/yaleksandr89/freecurrencyapi-converter-python/issues/new) с краткой просьбой о закрытом канале связи. Не публикуйте детали уязвимости, способы её эксплуатации, ключи или содержимое `.env`.
+Если приватная форма недоступна, в [Discussions](https://github.com/yaleksandr89/freecurrencyapi-converter-python/discussions) попросите закрытый канал связи, не раскрывая причину обращения или технические подробности. Не публикуйте детали уязвимости, способы её эксплуатации, ключи или содержимое `.env`.
 
 В приватном отчёте укажите SHA коммита, версию Python, затронутую команду, возможные последствия и минимальные шаги воспроизведения с вымышленными данными.
+
+Согласуйте публикацию технических подробностей с сопровождающим после выхода исправления. Фиксированного SLA и программы вознаграждений нет.
